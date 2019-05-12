@@ -1,0 +1,29 @@
+<- MainSocketHandler -------------------------------------------------------------------------------------------
+
+Класс, необходимый для работы евентов сокет-сервера (Server/php_socket_server.php)
+Существует в ЕДИНСТВЕННОМ экземпляре. Создается сокет-сервером.
+
+>>>>>>>>>>>>>>>>>>>>>>МЕТОДЫ<<<<<<<<<<<<<<<<<<<<<<
+
+function send($message) - Отправляем сообщение каждому клиенту сокета
+
+function sendRoomClient(Room $room, $message) - Отправляем сообщение каждому клиенту комнаты
+
+function unseal($socketData) - Декодируем сообщение полученное из сокета
+
+function seal($socketData) - Кодируем сообщение для отправки в сокет
+
+function doHandshake($received_header,$client_socket_resource, $host_name, $port) - Здороваемся с
+    клиентом. Проверка связи
+
+function newConnectionACK($client_ip_address) - Отправить на фронт сообщение о коннекте юзера (не используется)
+
+function connectionDisconnectACK($client_ip_address) - Отправить на фронт сообщение о
+    дисконнекте юзера (не используется)
+
+function createChatBoxMessage($chat_user, $chat_box_message) - Создать строчку с хтмл-кодом,
+    содержащим сообщение от юзера
+
+function createRoomMessageData($room_message, $messageType) - подготовить строчку для отправки клиенту
+
+------------------------------------------------------------------------------------------- MainSocketHandler ->
